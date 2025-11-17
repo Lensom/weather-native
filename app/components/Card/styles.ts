@@ -2,7 +2,6 @@ import { StyleSheet } from "react-native";
 
 export default StyleSheet.create({
   card: {
-    marginTop: 20,
     backgroundColor: "#1e213a",
     borderRadius: 16,
     padding: 20,
@@ -11,6 +10,7 @@ export default StyleSheet.create({
     shadowRadius: 8,
     shadowOffset: { width: 0, height: 4 },
     elevation: 6,
+    marginBottom: 20,
   },
   header: {
     flexDirection: "row",

@@ -1,13 +1,6 @@
 import { StyleSheet } from "react-native";
 
 export default StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: "#e3f2fd",
-  },
-  wrapper: {
-    padding: 24,
-  },
   title: {
     fontSize: 28,
     fontWeight: "700",
@@ -55,6 +48,12 @@ export default StyleSheet.create({
   },
   location: {
     marginBottom: 16,
+  },
+  locationWrapper: {
+    display: "flex",
+    flexDirection: "row",
+    alignItems: "center",
+    gap: 4,
   },
   locationText: {
     color: "#1976d2",

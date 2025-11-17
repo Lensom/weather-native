@@ -51,3 +51,10 @@ export type WeatherResponse = {
 };
 
 export type CardProps = WeatherResponse;
+
+export type WeatherShort = {
+  city: string;
+  temp: number;
+  icon: string;
+  desc: string;
+};
