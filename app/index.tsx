@@ -23,7 +23,7 @@ const Home = () => {
   const [history, setHistory] = useState<string[]>([]);
   const [loading, setLoading] = useState(false);
   const [query, setQuery] = useState("");
-  const [result, setResult] = useState<WeatherResponse>();
+  const [result, setResult] = useState<WeatherResponse | null>(null);
   const [error, setError] = useState("");
 
   const isButtonDisabled = query.length === 0 || loading;
@@ -124,7 +124,9 @@ const Home = () => {
 
       {error && <Text style={styles.error}>{error}</Text>}
 
-      {result?.current && <Card weather={result} />}
+      {result?.current && (
+        <Card weather={result} setResult={() => setResult(null)} />
+      )}
 
       {history.length > 0 && (
         <HistoryCards history={history} setHistory={setHistory} />

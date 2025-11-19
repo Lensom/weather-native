@@ -16,6 +16,7 @@ export default StyleSheet.create({
     flexDirection: "row",
     justifyContent: "space-between",
     alignItems: "center",
+    position: "relative",
   },
   city: {
     fontSize: 22,
@@ -77,5 +78,15 @@ export default StyleSheet.create({
     fontSize: 12,
     textAlign: "center",
     marginTop: 12,
+  },
+  deleteButton: {
+    position: "absolute",
+    top: -8,
+    right: -8,
+    zIndex: 9999,
+  },
+  closeIcon: {
+    color: "white",
+    fontSize: 24,
   },
 });

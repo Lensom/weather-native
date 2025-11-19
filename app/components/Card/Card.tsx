@@ -1,7 +1,8 @@
-import { View, Text, Image } from "react-native";
+import { View, Text, Image, TouchableHighlight } from "react-native";
 import styles from "./styles";
+import { CardProps } from "../../types";
 
-export const Card = ({ weather }) => {
+export const Card = ({ weather, setResult }: CardProps) => {
   const { location, current } = weather;
 
   const localTime = location.localtime.split(" ")[1];
@@ -9,6 +10,9 @@ export const Card = ({ weather }) => {
   return (
     <View style={styles.card}>
       <View style={styles.header}>
+        <TouchableHighlight onPress={setResult} style={styles.deleteButton}>
+          <Text style={styles.closeIcon}>⛌</Text>
+        </TouchableHighlight>
         <View>
           <Text style={styles.city}>
             {location.name}, {location.country}
