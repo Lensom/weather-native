@@ -1,16 +1,21 @@
 import { View, Text, Image, TouchableHighlight } from "react-native";
 import styles from "./styles";
-import { CardProps } from "../../types";
 
-export const Card = ({ weather, setResult }: CardProps) => {
-  const { location, current } = weather;
+import { useStore } from "../../store";
+
+export const Card = () => {
+  const { currentWeather, setCurrentWeather } = useStore();
+  const { location, current } = currentWeather;
 
   const localTime = location.localtime.split(" ")[1];
 
   return (
     <View style={styles.card}>
       <View style={styles.header}>
-        <TouchableHighlight onPress={setResult} style={styles.deleteButton}>
+        <TouchableHighlight
+          onPress={() => setCurrentWeather(null)}
+          style={styles.deleteButton}
+        >
           <Text style={styles.closeIcon}>⛌</Text>
         </TouchableHighlight>
         <View>

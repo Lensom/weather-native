@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import {
   Text,
   TextInput,
@@ -12,26 +12,22 @@ import * as Location from "expo-location";
 import { fetchWeather } from "./api/index";
 import { Card } from "./components/Card/Card";
 import { WeatherResponse } from "./types";
-import { saveCityToHistory } from "./utils";
 import Layout from "./components/Layout/Layout";
 
 import styles from "./styles";
-import AsyncStorage from "@react-native-async-storage/async-storage";
 import { HistoryCards } from "./components/HistoryCards/HistoryCards";
 
+import { useStore } from "./store";
+
 const Home = () => {
-  const [history, setHistory] = useState<string[]>([]);
+  const { addToHistory, history, setCurrentWeather, currentWeather } =
+    useStore();
+
   const [loading, setLoading] = useState(false);
   const [query, setQuery] = useState("");
-  const [result, setResult] = useState<WeatherResponse | null>(null);
   const [error, setError] = useState("");
 
   const isButtonDisabled = query.length === 0 || loading;
-
-  const loadHistory = async () => {
-    const stored = await AsyncStorage.getItem("history");
-    if (stored) setHistory(JSON.parse(stored));
-  };
 
   const getWeather = async () => {
     if (!query.trim()) return;
@@ -40,10 +36,9 @@ const Home = () => {
       Keyboard.dismiss();
       setLoading(true);
       const data: WeatherResponse = await fetchWeather(query);
-      setResult(data);
+      setCurrentWeather(data);
 
-      await saveCityToHistory(query);
-      loadHistory();
+      addToHistory(query);
     } catch (error) {
       setLoading(false);
       setError("Something went wrong");
@@ -71,7 +66,7 @@ const Home = () => {
         `${latitude},${longitude}`
       );
 
-      setResult(data);
+      setCurrentWeather(data);
     } catch (error) {
       setError("Something went wrong");
     } finally {
@@ -79,14 +74,9 @@ const Home = () => {
     }
   };
 
-  useEffect(() => {
-    loadHistory();
-  }, []);
-
   return (
     <Layout>
       <Text style={styles.title}>🌤 Weather</Text>
-
       <View style={styles.searchRow}>
         <TextInput
           placeholder="Type city name"
@@ -123,14 +113,8 @@ const Home = () => {
       )}
 
       {error && <Text style={styles.error}>{error}</Text>}
-
-      {result?.current && (
-        <Card weather={result} setResult={() => setResult(null)} />
-      )}
-
-      {history.length > 0 && (
-        <HistoryCards history={history} setHistory={setHistory} />
-      )}
+      {currentWeather?.current && <Card />}
+      {history.length > 0 && <HistoryCards />}
     </Layout>
   );
 };

@@ -3,15 +3,15 @@ import { HistoryCard } from "./HistoryCard";
 import { useEffect, useState } from "react";
 import { WeatherShort } from "../../types";
 import { fetchWeather } from "../../api";
-import { clearLastWeather } from "../../utils";
+import { useStore } from "../../store";
 
-export const HistoryCards = ({ history, setHistory }) => {
+export const HistoryCards = () => {
+  const { history, clearHistory } = useStore();
   const [lastWeather, setLastWeather] = useState<WeatherShort[]>([]);
 
   const handleClearHistory = async () => {
-    await clearLastWeather();
+    clearHistory();
     setLastWeather([]);
-    setHistory([]);
   };
 
   useEffect(() => {
