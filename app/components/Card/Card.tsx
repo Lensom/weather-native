@@ -1,11 +1,14 @@
 import { View, Text, Image, TouchableHighlight } from "react-native";
+
 import styles from "./styles";
 
 import { useStore } from "../../store";
+import { useAppNavigation } from "../../hooks/useAppNavigation";
 
 export const Card = () => {
   const { currentWeather, setCurrentWeather } = useStore();
   const { location, current } = currentWeather;
+  const navigation = useAppNavigation();
 
   const localTime = location.localtime.split(" ")[1];
 
@@ -67,6 +70,12 @@ export const Card = () => {
           <Text style={styles.value}>{current.vis_km} км</Text>
         </View>
       </View>
+      <Text
+        onPress={() => navigation.navigate("Forecast", { city: location.name })}
+        style={styles.get}
+      >
+        Get forecast for {location.name}
+      </Text>
 
       <Text style={styles.updated}>Updated: {current.last_updated}</Text>
     </View>

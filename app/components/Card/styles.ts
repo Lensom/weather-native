@@ -89,4 +89,10 @@ export default StyleSheet.create({
     color: "white",
     fontSize: 24,
   },
+  get: {
+    color: "#fff",
+    marginTop: 12,
+    fontSize: 18,
+    textAlign: "center",
+  },
 });
