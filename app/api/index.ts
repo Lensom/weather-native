@@ -1,5 +1,5 @@
 import { WeatherResponse } from "app/types";
-import { BASE_URL } from "../constants";
+import { BASE_URL } from "@/constants";
 
 export const fetchWeather = async (city: string) => {
   const key = process.env.EXPO_PUBLIC_WEATHER_API_KEY;

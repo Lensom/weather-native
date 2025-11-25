@@ -1,8 +1,8 @@
 import { View, Text, Image } from "react-native";
 import styles from "./styles";
-import { WeatherShort } from "../../types";
+import { WeatherShort } from "@/types";
 
-export const HistoryCard = ({ city, temp, icon, desc }: WeatherShort) => {
+const HistoryCard = ({ city, temp, icon, desc }: WeatherShort) => {
   return (
     <View style={styles.card}>
       <Image style={styles.icon} source={{ uri: `https:${icon}` }} />
@@ -16,3 +16,5 @@ export const HistoryCard = ({ city, temp, icon, desc }: WeatherShort) => {
     </View>
   );
 };
+
+export default HistoryCard;

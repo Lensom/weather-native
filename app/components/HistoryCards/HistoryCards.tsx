@@ -1,11 +1,11 @@
 import { Button, View } from "react-native";
-import { HistoryCard } from "./HistoryCard";
+import HistoryCard from "./HistoryCard";
 import { useEffect, useState } from "react";
-import { WeatherShort } from "../../types";
-import { fetchWeather } from "../../api";
-import { useStore } from "../../store";
+import { WeatherShort } from "@/types";
+import { fetchWeather } from "@/api";
+import { useStore } from "@/store";
 
-export const HistoryCards = () => {
+const HistoryCards = () => {
   const { history, clearHistory } = useStore();
   const [lastWeather, setLastWeather] = useState<WeatherShort[]>([]);
 
@@ -56,3 +56,5 @@ export const HistoryCards = () => {
     </View>
   );
 };
+
+export default HistoryCards;

@@ -9,15 +9,15 @@ import {
 } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 import * as Location from "expo-location";
-import { fetchWeather } from "../../api/index";
-import { Card } from "../../components/Card/Card";
-import { WeatherResponse } from "../../types";
-import Layout from "../../components/Layout/Layout";
+import { fetchWeather } from "@/api/index";
+import HistoryCards from "@/components/HistoryCards/HistoryCards";
+import Card from "@/components/Card/Card";
+import Layout from "@/components/Layout/Layout";
+import { WeatherResponse } from "@/types";
 
 import styles from "./styles";
-import { HistoryCards } from "../../components/HistoryCards/HistoryCards";
 
-import { useStore } from "../../store";
+import { useStore } from "@/store";
 
 const Home = () => {
   const { addToHistory, history, setCurrentWeather, currentWeather } =

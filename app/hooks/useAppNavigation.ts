@@ -1,4 +1,4 @@
-import { RootNavigationProp } from "../types";
+import { RootNavigationProp } from "@/types";
 
 import { useNavigation } from "@react-navigation/native";
 

@@ -2,10 +2,10 @@ import { View, Text, Image, TouchableHighlight } from "react-native";
 
 import styles from "./styles";
 
-import { useStore } from "../../store";
-import { useAppNavigation } from "../../hooks/useAppNavigation";
+import { useStore } from "@/store";
+import { useAppNavigation } from "@/hooks";
 
-export const Card = () => {
+const Card = () => {
   const { currentWeather, setCurrentWeather } = useStore();
   const { location, current } = currentWeather;
   const navigation = useAppNavigation();
@@ -81,3 +81,5 @@ export const Card = () => {
     </View>
   );
 };
+
+export default Card;

@@ -2,7 +2,7 @@ import { create } from "zustand";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { persist, createJSONStorage } from "zustand/middleware";
 
-import { State, Actions } from "../types";
+import { State, Actions } from "@/types";
 
 export const useStore = create<State & Actions>()(
   persist(

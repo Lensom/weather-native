@@ -1,9 +1,9 @@
 import { Text, View } from "react-native";
-import Layout from "../../components/Layout/Layout";
+import Layout from "@/components/Layout/Layout";
 import { useEffect, useState } from "react";
-import { fetchForecast } from "../../api";
-import ForecastList from "../../components/ForecastList/ForecastList";
-import { useAppNavigation } from "../../hooks/useAppNavigation";
+import { fetchForecast } from "@/api";
+import ForecastList from "@/components/ForecastList/ForecastList";
+import { useAppNavigation } from "@/hooks";
 import styles from "./styles";
 
 const Forecast = ({ route }) => {
